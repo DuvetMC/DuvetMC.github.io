@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="preconnect" href="https://fonts.bunny.net">
+		<link rel="stylesheet" href="https://fonts.bunny.net/css?family=inter:400,700&display=swap">
+		<link rel="stylesheet" href="/assets/style.css">
+		<title>DuvetMC - {{ title }}</title>
+	</head>
+
+	<body>
+		<header>
+            <h1 class="header-title">DuvetMC - {{ title }}</h1>
+            <a class="header-links" href="https://discord.gg/tEZm3cHUNG">Discord Server</a>
+        </header>
+
+        <div class="navbar">
+            {%- for entry in search.pages("menu.visible=true", "menu.order") %}
+				<a class="navbar-links" href="{{ entry.data.url }}" {% if entry.data.url==url %} aria-current="page" {% endif %}>
+					{{ entry.data.menu.title or entry.data.title }}
+				</a>
+			{%- endfor %}
+        </div>
+
+		<div class="body">
+			{{ content | safe }}
+		</div>
+	</body>
+</html>
